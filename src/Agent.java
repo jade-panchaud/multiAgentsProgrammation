@@ -35,6 +35,14 @@ public class Agent {
 
     }
 
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
     public void distributeCards(List<Card> newCards){
         this.cards = newCards;
     }

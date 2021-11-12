@@ -5,6 +5,12 @@ public class CardSet {
     private List<Card> cardsInGame;
     private boolean bombReturned;
 
+    public CardSet(int numberOfAgents) {
+        this.greenCardsReturned = 0;
+        this.cardsInGame = createCardSet(numberOfAgents);
+        this.bombReturned = false;
+    }
+
     public List<Card> createCardSet(int numberOfAgents){
         return null;
     }
