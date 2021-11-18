@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Party {
+public class Game {
     private List<Agent> players;
     private CardSet cards;
 
     //Has to ask :
     //How many agents
     //Which strategies ?
-    public void startGame(){
+    public void startGame() {
         Scanner clavier = new Scanner(System.in);
         int playersNumber = 0;
 

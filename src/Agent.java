@@ -23,7 +23,7 @@ public class Agent {
 
     private boolean hasBomb(){
         for (Card aCard: cards) {
-            if(aCard == Card.BOMB){
+            if (aCard == card.BOMB) {
                 return true;
             }
         }
