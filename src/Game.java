@@ -59,7 +59,7 @@ public class Game {
      * @return the agent choosen.
      */
     private Agent chooseRandomPlayer(){
-        int random = (int)(Math.random()*(players.size() + 1));
+        int random = (int)(Math.random()*(players.size()));
         return players.get(random);
     }
 

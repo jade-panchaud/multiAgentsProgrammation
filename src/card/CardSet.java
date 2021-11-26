@@ -2,21 +2,40 @@ package card;
 
 import agent.Agent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CardSet implements CardListener {
     private int greenCardsReturned;
-    private final List<Card> cardsInGame;
+    private List<Card> cardsInGame;
     private boolean bombReturned;
 
     public CardSet(int numberOfAgents) {
         this.greenCardsReturned = 0;
-        this.cardsInGame = createCardSet(numberOfAgents);
+        createCardSet(numberOfAgents);
         this.bombReturned = false;
     }
 
-    public List<Card> createCardSet(int numberOfAgents){
-       return null;
+    /**
+     * Create the set of cards.
+     * A set of cards has 1 bomb, x green cards (x the number of
+     * players) and 15 + (x - 4) * 4 yellow cards/
+     * @param numberOfAgents the number of players.
+     */
+    public void createCardSet(int numberOfAgents){
+       cardsInGame = new ArrayList<>();
+
+       cardsInGame.add(new Card(CardType.BOMB));
+
+       for(int i = 0; i < numberOfAgents; i++){
+           cardsInGame.add(new Card(CardType.GREEN));
+       }
+
+       int yellowCards = 15 + ((numberOfAgents - 4) * 4);
+       for(int i = 0; i < yellowCards; i++){
+           cardsInGame.add(new Card(CardType.YELLOW));
+       }
+
     }
 
     public void giveCards(List<Agent> players){

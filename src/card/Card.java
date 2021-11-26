@@ -1,8 +1,12 @@
 package card;
 
-public abstract class Card {
+public class Card {
     CardType type;
     private CardListener listener;
+
+    public Card(CardType type) {
+        this.type = type;
+    }
 
     /**
      * The card is returned by an Agent.
