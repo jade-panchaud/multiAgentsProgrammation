@@ -16,7 +16,7 @@ public class CardSet implements CardListener {
     }
 
     public List<Card> createCardSet(int numberOfAgents){
-        return null;
+       return null;
     }
 
     public void giveCards(List<Agent> players){
@@ -29,6 +29,10 @@ public class CardSet implements CardListener {
 
     public boolean isBombReturned() {
         return bombReturned;
+    }
+
+    public int getRemainedCardsInGame(){
+        return cardsInGame.size();
     }
 
     @Override
