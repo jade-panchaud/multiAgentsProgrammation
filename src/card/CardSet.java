@@ -1,3 +1,7 @@
+package card;
+
+import agent.Agent;
+
 import java.util.List;
 
 public class CardSet {

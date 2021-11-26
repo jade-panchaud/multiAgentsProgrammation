@@ -1,3 +1,5 @@
+import card.CardSet;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,30 +23,6 @@ public class Game {
 
     //Create the players set
     private void createPlayers(int playersNumber){
-        int redTeam = 1;
-        List<Agent> newPlayers = new ArrayList<>();
-
-        //Adapt the number of read players in function of
-        //the total of players
-        if(playersNumber >= 5) {
-            redTeam = 2;
-        }
-
-        //Create the blue players
-        for(int i = 0; i < playersNumber - redTeam; i++){
-            Agent newBlueTeamPlayer = new Agent();
-            newBlueTeamPlayer.setTeam(Team.BLUE);
-            newPlayers.add(newBlueTeamPlayer);
-        }
-
-        //Create the red players
-        for(int i = 0; i < redTeam; i++){
-            Agent newRedTeamPlayer = new Agent();
-            newRedTeamPlayer.setTeam(Team.RED);
-            newPlayers.add(newRedTeamPlayer);
-        }
-
-        this.players = newPlayers;
     }
 
     //Choose with random a player

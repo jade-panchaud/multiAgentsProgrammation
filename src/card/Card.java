@@ -1,8 +1,8 @@
 package card;
 
-import javafx.beans.Observable;
+import java.util.Observable;
 
-public abstract class Card implements Observable {
+public abstract class Card extends Observable {
 
     public Card pick() {
         return this;

@@ -1,3 +1,5 @@
+import card.Card;
+
 import java.util.List;
 import java.util.Map;
 
@@ -11,23 +13,10 @@ public class Agent {
     }
 
     public boolean makeAnAnnonce(){
-        if(team == Team.BLUE) {
-            if(hasBomb()){
-                return false;
-            }
-        } else {
-
-        }
         return false;
     }
 
     private boolean hasBomb(){
-        for (Card aCard: cards) {
-            if (aCard == card.BOMB) {
-                return true;
-            }
-        }
-
         return false;
     }
 
