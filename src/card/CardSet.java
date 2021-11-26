@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CardSet implements CardListener {
     private int greenCardsReturned;
-    private List<Card> cardsInGame;
+    private final List<Card> cardsInGame;
     private boolean bombReturned;
 
     public CardSet(int numberOfAgents) {
@@ -34,15 +34,17 @@ public class CardSet implements CardListener {
     @Override
     public void greenReturned(Card card) {
         greenCardsReturned++;
+        cardsInGame.remove(card);
     }
 
     @Override
     public void yellowReturned(Card card) {
-
+        cardsInGame.remove(card);
     }
 
     @Override
     public void bombReturned(Card card) {
         bombReturned = true;
+        cardsInGame.remove(card);
     }
 }

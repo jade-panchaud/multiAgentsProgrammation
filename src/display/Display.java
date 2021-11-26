@@ -34,7 +34,7 @@ public interface Display {
     public void showAgentCardHand(Agent agent);
 
     //Show the winner team
-    public void showWinners();
+    public void showWinners(Enum team);
 
 
 }

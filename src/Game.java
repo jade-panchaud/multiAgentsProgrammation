@@ -1,12 +1,18 @@
 import card.CardSet;
+import display.Display;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Game {
+    private Display display;
     private List<Agent> players;
     private CardSet cards;
+
+    public Game(Display display) {
+        this.display = display;
+    }
 
     //Has to ask :
     //How many agents
@@ -21,6 +27,10 @@ public class Game {
         this.cards = new CardSet(playersNumber);
     }
 
+    public void startNewRound(Agent agentBeginningTheRound,int numberOfCardsPerAgent){
+
+    }
+
     //Create the players set
     private void createPlayers(int playersNumber){
     }
@@ -33,9 +43,11 @@ public class Game {
 
     //If the bomb card is returned, or all of the green card are returned, it's a
     //victory for one of the team
-    private boolean victoryCondition(){
+    private void victoryCondition(){
         if(cards.isBombReturned()){
-            return true;
-        } else return cards.getGreenCardsReturned() == players.size();
+            display.showWinners(Team.RED);
+        } else if(cards.getGreenCardsReturned() == players.size()){
+            display.showWinners(Team.BLUE);
+        };
     }
 }
