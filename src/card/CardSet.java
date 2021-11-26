@@ -4,7 +4,7 @@ import agent.Agent;
 
 import java.util.List;
 
-public class CardSet {
+public class CardSet implements CardListener {
     private int greenCardsReturned;
     private List<Card> cardsInGame;
     private boolean bombReturned;
@@ -29,5 +29,20 @@ public class CardSet {
 
     public boolean isBombReturned() {
         return bombReturned;
+    }
+
+    @Override
+    public void greenReturned(Card card) {
+        greenCardsReturned++;
+    }
+
+    @Override
+    public void yellowReturned(Card card) {
+
+    }
+
+    @Override
+    public void bombReturned(Card card) {
+        bombReturned = true;
     }
 }
