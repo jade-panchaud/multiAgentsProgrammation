@@ -4,8 +4,10 @@ import agent.Agent;
 import card.Card;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class DisplayConsole implements Display{
+
     @Override
     public void showAgents(List<Agent> agentList) {
         for (Agent agent: agentList) {

@@ -1,3 +1,5 @@
+import agent.Agent;
+import agent.CopyCat;
 import card.CardSet;
 import display.Display;
 
@@ -17,14 +19,9 @@ public class Game {
     //Has to ask :
     //How many agents
     //Which strategies ?
-    public void startGame() {
-        Scanner clavier = new Scanner(System.in);
-        int playersNumber = 0;
-
-        System.out.println("Quel sera le nombre d'agents ? \n");
-        playersNumber = clavier.nextInt();
-
-        this.cards = new CardSet(playersNumber);
+    public void startGame(List<Agent> choosenPlayers) {
+        this.players = choosenPlayers;
+        this.cards = new CardSet(players.size() * players.size());
     }
 
     public void startNewRound(Agent agentBeginningTheRound,int numberOfCardsPerAgent){
