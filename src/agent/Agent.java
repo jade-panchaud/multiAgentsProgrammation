@@ -1,5 +1,7 @@
 package agent;
 
+import card.CardHand;
+
 import java.util.List;
 
 public interface Agent {
@@ -11,14 +13,6 @@ public interface Agent {
      * @return the agent choosen to pick a card
      */
     public Agent choseAgent(List<Agent> agents);
-
-    /**
-     * Every new turn, each agent calcul the confidence he has
-     * in each other agent and also their reputation in order
-     * to make the decision to pick a card from an Agent rather
-     * than another one
-     */
-    public void confidenceAndReputationCalcul();
 
     /**
      * In function of this cards in hands, strategy and his team, an
@@ -33,5 +27,5 @@ public interface Agent {
      * @return TRUE if another Agent can pick one of his cards,
      *         FALSE if other Agents shouldn't.
      */
-    public boolean makeAnAnnonce();
+    public CardHand makeAnAnnonce();
 }
