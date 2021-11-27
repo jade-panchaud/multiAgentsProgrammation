@@ -1,6 +1,8 @@
 package card;
 
 import agent.Agent;
+import agent.AgentCommon;
+import tools.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,10 +46,20 @@ public class CardSet implements CardListener {
      * round)
      * @param players all the players
      */
-    public void giveCards(List<Agent> players){
-        int numberOfCardsPerAgent = this.getRemainedCardsInGame() / players.size();
-        for (Agent agent: players) {
+    public void giveCards(List<AgentCommon> players){
+        int numberOfCardsPerAgent = (this.getRemainedCardsInGame() / players.size());
+
+        for (AgentCommon agent: players) {
             CardHand cardHand = new CardHand();
+            List<Card> listOfCards = new ArrayList<>();
+
+            for(int i = 0; i < numberOfCardsPerAgent; i++){
+                int giveRandomCard = Util.randomInt(cardsInGame.size());
+                listOfCards.add(cardsInGame.get(giveRandomCard));
+            }
+
+            cardHand.setCardsInHand(listOfCards);
+            agent.setHand(cardHand);
         }
 
     }

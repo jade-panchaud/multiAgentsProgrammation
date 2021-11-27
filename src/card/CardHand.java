@@ -16,6 +16,9 @@ public class CardHand {
     }
 
     public Card pick() {
-        return cardsInHand.remove(Util.randomInt(cardsInHand.size()));
+        Card cardPicked = cardsInHand.remove(Util.randomInt(cardsInHand.size()));
+        cardPicked.pick();
+
+        return cardPicked;
     }
 }
