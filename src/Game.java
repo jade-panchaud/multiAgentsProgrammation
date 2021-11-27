@@ -5,7 +5,7 @@ import display.Display;
 import java.util.List;
 
 public class Game {
-    private Display display;
+    private final Display display;
     private List<Agent> players;
     private CardSet cards;
 
@@ -19,10 +19,10 @@ public class Game {
      */
     public void startGame(List<Agent> choosenPlayers) {
         this.players = choosenPlayers;
-        this.cards = new CardSet(players.size());
+        this.cards = new CardSet(this.players.size());
 
         Agent firstAgentToPlay = this.chooseRandomPlayer();
-        int numberOfCardsPerAgent = players.size();
+        int numberOfCardsPerAgent = this.players.size();
 
         //While there is no victory, start a new round with less
         //cards in each round
@@ -41,14 +41,15 @@ public class Game {
      */
     public Agent startNewRound(Agent agentBeginningTheRound,int numberOfCardsPerAgent){
        //TODO: faire le mécanisme d'un tour (piocher chez l'un, l'autre etc)
+        this.cards.giveCards(this.players);
 
-        for (Agent agent: players) {
+        for (Agent agent: this.players) {
             agent.makeAnAnnonce();
             //TODO : calculer confiance et réputation de l'agent qui choisi après chaque annonce ? ou à la fin ?
             //TODO : choisir le moment du calcul
         }
 
-        return agentBeginningTheRound.choseAgent(players);
+        return agentBeginningTheRound.choseAgent(this.players);
     }
 
     /**
@@ -56,8 +57,8 @@ public class Game {
      * @return the agent choosen.
      */
     private Agent chooseRandomPlayer(){
-        int random = (int)(Math.random()*(players.size()));
-        return players.get(random);
+        int random = (int)(Math.random()*(this.players.size()));
+        return this.players.get(random);
     }
 
     /**
@@ -67,11 +68,11 @@ public class Game {
      * @return TRUE if any team has win or FALSE if their is no victory.
      */
     private boolean victoryCondition(){
-        if(cards.isBombReturned() || cards.getRemainedCardsInGame() < players.size()){
-            display.showWinners(Team.RED);
+        if(this.cards.isBombReturned() || this.cards.getRemainedCardsInGame() < this.players.size()){
+            this.display.showWinners(Team.RED);
             return true;
-        } else if(cards.getGreenCardsReturned() == players.size()){
-            display.showWinners(Team.BLUE);
+        } else if(this.cards.getGreenCardsReturned() == this.players.size()){
+            this.display.showWinners(Team.BLUE);
             return true;
         } else {
             return false;

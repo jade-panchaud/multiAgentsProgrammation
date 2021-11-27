@@ -46,10 +46,10 @@ public class CardSet implements CardListener {
      * round)
      * @param players all the players
      */
-    public void giveCards(List<AgentCommon> players){
+    public void giveCards(List<Agent> players){
         int numberOfCardsPerAgent = (this.getRemainedCardsInGame() / players.size());
 
-        for (AgentCommon agent: players) {
+        for (Agent agent: players) {
             CardHand cardHand = new CardHand();
             List<Card> listOfCards = new ArrayList<>();
 
