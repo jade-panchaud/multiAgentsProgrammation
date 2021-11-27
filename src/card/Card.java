@@ -15,14 +15,18 @@ public class Card {
      * @return the card
      */
     public Card pick() {
-        if(this.type == CardType.GREEN){
+        if (this.type == CardType.GREEN) {
             listener.greenReturned(this);
-        } else if(this.type == CardType.BOMB){
+        } else if (this.type == CardType.BOMB) {
             listener.bombReturned(this);
         } else {
             listener.yellowReturned(this);
         }
 
         return this;
+    }
+
+    public CardType getType() {
+        return type;
     }
 }
