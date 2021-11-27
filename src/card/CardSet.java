@@ -38,7 +38,17 @@ public class CardSet implements CardListener {
 
     }
 
+    /**
+     * Give a hand of cards for each agent, depending of how many cards
+     * are still in the game (should be one less than the previous
+     * round)
+     * @param players all the players
+     */
     public void giveCards(List<Agent> players){
+        int numberOfCardsPerAgent = this.getRemainedCardsInGame() / players.size();
+        for (Agent agent: players) {
+            CardHand cardHand = new CardHand();
+        }
 
     }
 
