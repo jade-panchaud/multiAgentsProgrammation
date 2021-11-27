@@ -1,5 +1,6 @@
 package display;
 
+import Team.Team;
 import agent.Agent;
 import card.Card;
 import java.util.List;
@@ -34,7 +35,7 @@ public interface Display {
     void showAgentCardHand(Agent agent);
 
     //Show the winner team
-    void showWinners(Enum team);
+    void showWinners(Team team);
 
 
 }

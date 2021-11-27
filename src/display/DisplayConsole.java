@@ -1,5 +1,6 @@
 package display;
 
+import Team.Team;
 import agent.Agent;
 import card.Card;
 
@@ -32,12 +33,12 @@ public class DisplayConsole implements Display{
 
     @Override
     public void showAnnoncement(Agent agent, boolean annonce) {
-        System.out.println("L'agent " + agent + " annonce " + annonce + "\n");
+        System.out.println("L'agent " + agent.getClass().getName() + " annonce " + annonce + "\n");
     }
 
     @Override
     public void showChoosenAgent(Agent choosenAgent, Agent agentWhoChoose) {
-        System.out.println("L'agent " + agentWhoChoose + " a pioché chez " + choosenAgent + "\n");
+        System.out.println("L'agent " + agentWhoChoose.getClass().getName() + " a pioché chez " + choosenAgent.getClass().getName() + "\n");
     }
 
     @Override
@@ -55,7 +56,11 @@ public class DisplayConsole implements Display{
     }
 
     @Override
-    public void showWinners(Enum team) {
-
+    public void showWinners(Team team) {
+        if(team == Team.BLUE){
+            System.out.println("L'équipe bleue a gagné !");
+        } else {
+            System.out.println("L'équipe rouge a gagné !");
+        }
     }
 }
