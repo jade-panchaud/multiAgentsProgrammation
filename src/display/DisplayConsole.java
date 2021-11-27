@@ -36,8 +36,8 @@ public class DisplayConsole implements Display{
     }
 
     @Override
-    public void showChoosenAgent(Agent choosenAgent) {
-
+    public void showChoosenAgent(Agent choosenAgent, Agent agentWhoChoose) {
+        System.out.println("L'agent " + agentWhoChoose + " a pioché chez " + choosenAgent + "\n");
     }
 
     @Override
@@ -52,7 +52,6 @@ public class DisplayConsole implements Display{
 
     @Override
     public void showAgentCardHand(Agent agent) {
-
     }
 
     @Override
