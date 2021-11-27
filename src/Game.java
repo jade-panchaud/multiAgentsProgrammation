@@ -1,5 +1,4 @@
 import agent.Agent;
-import agent.CopyCat;
 import card.CardSet;
 import display.Display;
 

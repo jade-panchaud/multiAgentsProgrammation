@@ -1,5 +1,5 @@
 import agent.Agent;
-import agent.CopyCat;
+import agent.AgentCommon;
 import display.Display;
 import display.DisplayConsole;
 
@@ -14,11 +14,12 @@ public class Main {
         Game game = new Game(display);
 
         List<Agent> players = new ArrayList<>();
-        players.add(new CopyCat());
-        players.add(new CopyCat());
-        players.add(new CopyCat());
-        players.add(new CopyCat());
-        players.add(new CopyCat());
+        players.add(new AgentCommon());
+        players.add(new AgentCommon());
+        players.add(new AgentCommon());
+        players.add(new AgentCommon());
+        players.add(new AgentCommon());
+
 
         game.startGame(players);
     }
