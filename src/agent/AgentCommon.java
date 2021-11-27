@@ -20,4 +20,12 @@ public class AgentCommon implements Agent {
     public CardHand makeAnAnnonce() {
         return hand;
     }
+
+    public CardHand getHand() {
+        return hand;
+    }
+
+    public void setHand(CardHand hand) {
+        this.hand = hand;
+    }
 }
