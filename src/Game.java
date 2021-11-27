@@ -22,6 +22,9 @@ public class Game {
         this.players = choosenPlayers;
         this.cards = new CardSet(this.players.size());
         display.showAgents(choosenPlayers);
+        display.showAgents(this.players);
+
+        this.cards = new CardSet(players.size());
 
         Agent firstAgentToPlay = this.chooseRandomPlayer();
         int numberOfCardsPerAgent = this.players.size();
@@ -47,18 +50,19 @@ public class Game {
 
         for (Agent agent: this.players) {
             agent.makeAnAnnonce();
-            //TODO : calculer confiance et réputation de l'agent qui choisi après chaque annonce ? ou à la fin ?
-            //TODO : choisir le moment du calcul
+            agentBeginningTheRound.confidenceAndReputationCalcul();
         }
 
-        Agent agentFromWhomWeWillPick = agentBeginningTheRound;
-        for(int i = 0; i < numberOfCardsPerAgent; i++){
-            agentFromWhomWeWillPick = agentBeginningTheRound.choseAgent(this.players);
-            display.showChoosenAgent(agentFromWhomWeWillPick, agentBeginningTheRound);
+        Agent agentFromWhomWeWillPickACard = agentBeginningTheRound;
+        //TODO : condition victore
+        //TODO : calculer confiance après chaque tirage de carte
+        while (numberOfCardsPerAgent > 1){
+            agentFromWhomWeWillPickACard = agentBeginningTheRound.choseAgent(players);
+            numberOfCardsPerAgent--;
+            display.showGreenReturnedCards(cards.getGreenCardsReturned());
         }
 
-
-        return agentFromWhomWeWillPick;
+        return agentFromWhomWeWillPickACard;
     }
 
     /**
