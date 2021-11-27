@@ -20,6 +20,7 @@ public class Game {
     public void startGame(List<Agent> choosenPlayers) {
         this.players = choosenPlayers;
         this.cards = new CardSet(this.players.size());
+        display.showAgents(choosenPlayers);
 
         Agent firstAgentToPlay = this.chooseRandomPlayer();
         int numberOfCardsPerAgent = this.players.size();
@@ -39,7 +40,7 @@ public class Game {
      * @param numberOfCardsPerAgent number of cards in each agent hands.
      * @return the agent that will begin the next round.
      */
-    public Agent startNewRound(Agent agentBeginningTheRound,int numberOfCardsPerAgent){
+    public Agent startNewRound(Agent agentBeginningTheRound, int numberOfCardsPerAgent){
        //TODO: faire le mécanisme d'un tour (piocher chez l'un, l'autre etc)
         this.cards.giveCards(this.players);
 
@@ -49,7 +50,14 @@ public class Game {
             //TODO : choisir le moment du calcul
         }
 
-        return agentBeginningTheRound.choseAgent(this.players);
+        Agent agentFromWhomWeWillPick = agentBeginningTheRound;
+        for(int i = 0; i < numberOfCardsPerAgent; i++){
+            agentFromWhomWeWillPick = agentBeginningTheRound.choseAgent(this.players);
+            display.showChoosenAgent(agentFromWhomWeWillPick, agentBeginningTheRound);
+        }
+
+
+        return agentFromWhomWeWillPick;
     }
 
     /**
