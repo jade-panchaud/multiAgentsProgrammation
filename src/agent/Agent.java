@@ -6,13 +6,17 @@ import java.util.List;
 
 public interface Agent {
 
+    CardHand getHand();
+
+    void setHand(CardHand hand);
+
     /**
      * Choose an agent to pick a card, in order to make
      * win his team.
      * @param agents the list of agents playing the game
      * @return the agent choosen to pick a card
      */
-    public Agent choseAgent(List<Agent> agents);
+    Agent choseAgent(List<Agent> agents);
 
     /**
      * In function of this cards in hands, strategy and his team, an
@@ -27,5 +31,5 @@ public interface Agent {
      * @return TRUE if another Agent can pick one of his cards,
      *         FALSE if other Agents shouldn't.
      */
-    public CardHand makeAnAnnonce();
+    CardHand makeAnAnnonce();
 }

@@ -21,10 +21,12 @@ public class AgentCommon implements Agent {
         return hand;
     }
 
+    @Override
     public CardHand getHand() {
         return hand;
     }
 
+    @Override
     public void setHand(CardHand hand) {
         this.hand = hand;
     }
