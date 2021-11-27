@@ -3,9 +3,7 @@ import agent.CopyCat;
 import card.CardSet;
 import display.Display;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Game {
     private Display display;
