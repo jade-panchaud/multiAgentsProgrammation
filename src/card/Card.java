@@ -4,8 +4,9 @@ public class Card {
     CardType type;
     private CardListener listener;
 
-    public Card(CardType type) {
+    public Card(CardType type, CardListener listener) {
         this.type = type;
+        this.listener = listener;
     }
 
     /**

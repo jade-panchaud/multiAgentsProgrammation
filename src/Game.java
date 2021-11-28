@@ -33,7 +33,7 @@ public class Game {
         //cards in each round
         while(!victoryCondition()){
             Agent agentStartingNewRound = startNewRound(firstAgentToPlay, numberOfCardsPerAgent);
-            --numberOfCardsPerAgent;
+            numberOfCardsPerAgent = this.cards.getRemainedCardsInGame() / this.players.size();
             firstAgentToPlay = agentStartingNewRound;
         }
     }
@@ -50,14 +50,15 @@ public class Game {
 
         for (Agent agent: this.players) {
             agent.makeAnAnnonce();
-            agentBeginningTheRound.confidenceAndReputationCalcul();
         }
 
         Agent agentFromWhomWeWillPickACard = agentBeginningTheRound;
         //TODO : condition victore
         //TODO : calculer confiance après chaque tirage de carte
         while (numberOfCardsPerAgent > 1){
-            agentFromWhomWeWillPickACard = agentBeginningTheRound.choseAgent(players);
+            //agentFromWhomWeWillPickACard = agentBeginningTheRound.choseAgent(players);
+            agentFromWhomWeWillPickACard = this.players.get(0);
+            agentFromWhomWeWillPickACard.getHand().pick();
             numberOfCardsPerAgent--;
             display.showGreenReturnedCards(cards.getGreenCardsReturned());
         }

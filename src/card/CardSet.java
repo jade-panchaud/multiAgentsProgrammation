@@ -5,9 +5,10 @@ import agent.AgentCommon;
 import tools.Util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class CardSet implements CardListener {
+public class CardSet {
     private int greenCardsReturned;
     private List<Card> cardsInGame;
     private boolean bombReturned;
@@ -27,15 +28,34 @@ public class CardSet implements CardListener {
     public void createCardSet(int numberOfAgents){
        cardsInGame = new ArrayList<>();
 
-       cardsInGame.add(new Card(CardType.BOMB));
+       CardListener cardListener = new CardListener() {
+           @Override
+           public void greenReturned(Card card) {
+               greenCardsReturned++;
+               cardsInGame.remove(card);
+           }
+
+           @Override
+           public void yellowReturned(Card card) {
+               cardsInGame.remove(card);
+           }
+
+           @Override
+           public void bombReturned(Card card) {
+               bombReturned = true;
+               cardsInGame.remove(card);
+           }
+       };
+
+       cardsInGame.add(new Card(CardType.BOMB, cardListener));
 
        for(int i = 0; i < numberOfAgents; i++){
-           cardsInGame.add(new Card(CardType.GREEN));
+           cardsInGame.add(new Card(CardType.GREEN, cardListener));
        }
 
        int yellowCards = 15 + ((numberOfAgents - 4) * 4);
        for(int i = 0; i < yellowCards; i++){
-           cardsInGame.add(new Card(CardType.YELLOW));
+           cardsInGame.add(new Card(CardType.YELLOW, cardListener));
        }
 
     }
@@ -74,22 +94,5 @@ public class CardSet implements CardListener {
 
     public int getRemainedCardsInGame(){
         return cardsInGame.size();
-    }
-
-    @Override
-    public void greenReturned(Card card) {
-        greenCardsReturned++;
-        cardsInGame.remove(card);
-    }
-
-    @Override
-    public void yellowReturned(Card card) {
-        cardsInGame.remove(card);
-    }
-
-    @Override
-    public void bombReturned(Card card) {
-        bombReturned = true;
-        cardsInGame.remove(card);
     }
 }
