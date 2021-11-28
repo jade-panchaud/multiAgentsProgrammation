@@ -2,6 +2,7 @@ import agent.Agent;
 import agent.AgentCommon;
 import display.Display;
 import display.DisplayConsole;
+import game.Game;
 
 import java.util.ArrayList;
 import java.util.List;

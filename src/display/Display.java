@@ -1,6 +1,6 @@
 package display;
 
-import Team.Team;
+import team.Team;
 import agent.Agent;
 import card.Card;
 import java.util.List;
@@ -36,6 +36,8 @@ public interface Display {
 
     //Show the winner team
     void showWinners(Team team);
+
+    void newTurn(int numberOfTheTurn);
 
 
 }

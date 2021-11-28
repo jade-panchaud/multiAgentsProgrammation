@@ -1,6 +1,8 @@
 package card;
 
 import agent.Agent;
+import agent.AgentCommon;
+import game.VictoryListener;
 import card_hand.CardHand;
 import tools.Util;
 
@@ -12,11 +14,15 @@ public class CardSet {
     private int greenCardsReturned;
     private List<Card> cardsInGame;
     private boolean bombReturned;
+    private int greenCardNeededToWin;
+    private VictoryListener victoryListener;
 
-    public CardSet(int numberOfAgents) {
+    public CardSet(int numberOfAgents, VictoryListener victoryListener) {
         this.greenCardsReturned = 0;
         createCardSet(numberOfAgents);
         this.bombReturned = false;
+        this.victoryListener = victoryListener;
+        this.greenCardNeededToWin = numberOfAgents;
     }
 
     /**
@@ -33,17 +39,28 @@ public class CardSet {
            public void greenReturned(Card card) {
                greenCardsReturned++;
                cardsInGame.remove(card);
+
+               if(greenCardsReturned == greenCardNeededToWin){
+                   victoryListener.blueTeamWins();
+               } else if (cardsInGame.size() < greenCardNeededToWin) {
+                   victoryListener.redTeamWins();
+               }
            }
 
            @Override
            public void yellowReturned(Card card) {
                cardsInGame.remove(card);
+
+               if(cardsInGame.size() < greenCardNeededToWin) {
+                   victoryListener.redTeamWins();
+               }
            }
 
            @Override
            public void bombReturned(Card card) {
                bombReturned = true;
                cardsInGame.remove(card);
+               victoryListener.redTeamWins();
            }
        };
 

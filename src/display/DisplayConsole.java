@@ -1,11 +1,10 @@
 package display;
 
-import Team.Team;
+import team.Team;
 import agent.Agent;
 import card.Card;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class DisplayConsole implements Display{
 
@@ -38,7 +37,7 @@ public class DisplayConsole implements Display{
 
     @Override
     public void showChoosenAgent(Agent choosenAgent, Agent agentWhoChoose) {
-        System.out.println("L'agent " + agentWhoChoose.getClass().getName() + " a pioché chez " + choosenAgent.getClass().getName() + "\n");
+        System.out.println("L'agent " + agentWhoChoose.getClass().getName() + " a pioché chez " + choosenAgent.getClass().getName());
     }
 
     @Override
@@ -62,5 +61,10 @@ public class DisplayConsole implements Display{
         } else {
             System.out.println("L'équipe rouge a gagné !");
         }
+    }
+
+    @Override
+    public void newTurn(int numberOfTheTurn) {
+        System.out.println("Tour " + numberOfTheTurn + "\n");
     }
 }
