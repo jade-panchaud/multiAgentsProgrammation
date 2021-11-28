@@ -30,12 +30,13 @@ public class BlueScoreCommon implements CardHandScore {
         int totalScore = 0;
 
         for (Card card : hand) {
+            totalScore += getCardScore(card);
         }
 
         return totalScore;
     }
 
-    private int getCardScore(CardType cardType) {
-        return cardScore.get(cardType);
+    private int getCardScore(Card card) {
+        return cardScore.get(card.getType());
     }
 }
