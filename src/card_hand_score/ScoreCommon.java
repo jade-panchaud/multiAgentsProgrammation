@@ -1,4 +1,4 @@
-package cardHandScore;
+package card_hand_score;
 
 import card.Card;
 import card.CardHand;
@@ -7,19 +7,12 @@ import card.CardType;
 import java.util.HashMap;
 import java.util.List;
 
-public class BlueScoreCommon implements CardHandScore {
+public abstract class ScoreCommon implements CardHandScore {
 
     private final HashMap<CardType, Integer> cardScore;
 
-    public BlueScoreCommon(HashMap<CardType, Integer> cardScore) {
+    public ScoreCommon(HashMap<CardType, Integer> cardScore) {
         this.cardScore = cardScore;
-    }
-
-    public BlueScoreCommon() {
-        cardScore = new HashMap<>();
-        cardScore.put(CardType.GREEN, 1);
-        cardScore.put(CardType.YELLOW, 0);
-        cardScore.put(CardType.BOMB, -10);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package cardHandScore;
+package card_hand_score;
 
 import card.Card;
 import card.CardHand;

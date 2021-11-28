@@ -2,9 +2,9 @@ package agent;
 
 import card.CardHand;
 import card.CardType;
-import cardHandScore.BlueScoreCommon;
-import cardHandScore.CardHandScore;
-import cardHandScore.Score;
+import card_hand_score.BlueScoreCommon;
+import card_hand_score.CardHandScore;
+import card_hand_score.Score;
 
 import java.util.HashMap;
 import java.util.List;
