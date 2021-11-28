@@ -9,6 +9,10 @@ public class Card {
         this.listener = listener;
     }
 
+    public Card(CardType type){
+        this.type = type;
+    }
+
     /**
      * The card is returned by an Agent.
      * In function of the type of the Card,
