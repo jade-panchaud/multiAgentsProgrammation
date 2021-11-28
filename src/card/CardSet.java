@@ -1,26 +1,21 @@
 package card;
 
 import agent.Agent;
-import agent.AgentCommon;
 import game.VictoryListener;
 import card_hand.CardHand;
 import tools.Util;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class CardSet {
     private int greenCardsReturned;
     private List<Card> cardsInGame;
-    private boolean bombReturned;
-    private int greenCardNeededToWin;
-    private VictoryListener victoryListener;
+    private final int greenCardNeededToWin;
+    private final VictoryListener victoryListener;
 
     public CardSet(int numberOfAgents, VictoryListener victoryListener) {
         this.greenCardsReturned = 0;
         createCardSet(numberOfAgents);
-        this.bombReturned = false;
         this.victoryListener = victoryListener;
         this.greenCardNeededToWin = numberOfAgents;
     }
@@ -58,7 +53,6 @@ public class CardSet {
 
            @Override
            public void bombReturned(Card card) {
-               bombReturned = true;
                cardsInGame.remove(card);
                victoryListener.redTeamWins();
            }
@@ -103,10 +97,6 @@ public class CardSet {
 
     public int getGreenCardsReturned() {
         return greenCardsReturned;
-    }
-
-    public boolean isBombReturned() {
-        return bombReturned;
     }
 
     public int getRemainedCardsInGame(){

@@ -49,7 +49,6 @@ public class Game {
      * @return the agent that will begin the next round.
      */
     public Agent startNewRound(Agent agentBeginningTheRound) {
-        //TODO: faire le mécanisme d'un tour (piocher chez l'un, l'autre etc)
         this.cards.giveCards(this.players);
 
         for (Agent agent : this.players) {
@@ -58,14 +57,13 @@ public class Game {
 
         Agent agentFromWhomWeWillPickACard;
         int numberOfActions = this.players.size();
-        //TODO : condition victore
-        //TODO : calculer confiance après chaque tirage de carte
+
         do {
-            //agentFromWhomWeWillPickACard = agentBeginningTheRound.choseAgent(players);
-            agentFromWhomWeWillPickACard = this.players.get(0);
+            agentFromWhomWeWillPickACard = agentBeginningTheRound.choseAgent(this.players);
             display.showChoosenAgent(agentFromWhomWeWillPickACard, agentBeginningTheRound);
 
-            agentFromWhomWeWillPickACard.getHand().pick();
+            display.showReturnedCard(agentFromWhomWeWillPickACard.pickACard());
+
             numberOfActions--;
             display.showGreenReturnedCards(cards.getGreenCardsReturned());
         } while (numberOfActions > 0 && this.gameStillRunning);

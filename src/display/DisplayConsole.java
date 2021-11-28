@@ -17,17 +17,17 @@ public class DisplayConsole implements Display{
 
     @Override
     public void showGreenRemainedCards(int remainedCards) {
-        System.out.println("Nombre de cartes vertes restantes : " + remainedCards + "\n");
+        System.out.println("Cartes vertes restantes : " + remainedCards + "\n");
     }
 
     @Override
     public void showGreenReturnedCards(int returnedCards) {
-        System.out.println("Nombre de cartes vertes retournées : " + returnedCards + "\n");
+        System.out.println("Cartes vertes retournées : " + returnedCards + "\n");
     }
 
     @Override
     public void showReturnedCard(Card returnedCard) {
-        System.out.println("Carte retournée : ");
+        System.out.println("Carte retournée : " + returnedCard.getType());
     }
 
     @Override
@@ -37,7 +37,7 @@ public class DisplayConsole implements Display{
 
     @Override
     public void showChoosenAgent(Agent choosenAgent, Agent agentWhoChoose) {
-        System.out.println("L'agent " + agentWhoChoose.getClass().getName() + " a pioché chez " + choosenAgent.getClass().getName());
+        System.out.println(agentWhoChoose.getClass().getName() + " a pioché chez " + choosenAgent.getClass().getName());
     }
 
     @Override
