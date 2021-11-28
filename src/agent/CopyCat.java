@@ -1,6 +1,6 @@
 //package agent;
 //
-//import card.CardHand;
+//import card_hand.CardHand;
 //
 //import java.util.List;
 //

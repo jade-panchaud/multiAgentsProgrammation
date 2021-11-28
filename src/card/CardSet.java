@@ -1,7 +1,7 @@
 package card;
 
 import agent.Agent;
-import agent.AgentCommon;
+import card_hand.CardHand;
 import tools.Util;
 
 import java.util.ArrayList;

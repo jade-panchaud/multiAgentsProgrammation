@@ -1,7 +1,7 @@
 package card_hand_score;
 
 import card.Card;
-import card.CardHand;
+import card_hand.CardHand;
 import card.CardType;
 import org.junit.jupiter.api.Test;
 

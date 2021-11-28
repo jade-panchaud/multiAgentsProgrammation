@@ -1,14 +1,16 @@
 package agent;
 
 import card.Card;
-import card.CardHand;
 import card.CardType;
+import card_hand.CardHand;
+import card_hand.CardHandInterface;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AgentCommonTest {
 
@@ -77,5 +79,31 @@ class AgentCommonTest {
         hand.setCardsInHand(cardInHand);
         agent.setHand(hand);
         return agent;
+    }
+
+    @Test
+    void pickACard() {
+
+        Agent agent = new AgentCommon();
+
+        CardHandInterface hand = new CardHandMock();
+        List<Card> cardInHand = new ArrayList<>();
+        cardInHand.add(new Card(CardType.GREEN));
+        cardInHand.add(new Card(CardType.GREEN));
+        cardInHand.add(new Card(CardType.YELLOW));
+        cardInHand.add(new Card(CardType.YELLOW));
+        cardInHand.add(new Card(CardType.BOMB));
+
+        hand.setCardsInHand(cardInHand);
+
+        CardHandInterface handClone = hand.Clone();
+        agent.setHand(handClone);
+        Card pickedCard = agent.pickACard();
+
+        HashMap<CardHandInterface, CardType> actions = new HashMap<>();
+        actions.put(hand, pickedCard.getType());
+
+        assertEquals(actions, agent.getActions());
+
     }
 }

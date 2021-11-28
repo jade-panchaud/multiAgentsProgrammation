@@ -1,7 +1,8 @@
 package agent;
 
-import card.CardHand;
+import card.Card;
 import card.CardType;
+import card_hand.CardHandInterface;
 import card_hand_score.BlueScoreCommon;
 import card_hand_score.CardHandScore;
 import card_hand_score.Score;
@@ -12,9 +13,13 @@ import java.util.TreeSet;
 
 public class AgentCommon implements Agent {
 
-    private CardHand hand;
-    private HashMap<CardHand, CardType> actions;
+    private CardHandInterface hand;
+    private final HashMap<CardHandInterface, CardType> actions;
     private final CardHandScore cardHandScore = new BlueScoreCommon();
+
+    public AgentCommon() {
+        actions = new HashMap<>();
+    }
 
     @Override
     public Agent choseAgent(List<Agent> agents) {
@@ -36,17 +41,30 @@ public class AgentCommon implements Agent {
     }
 
     @Override
-    public CardHand makeAnAnnonce() {
+    public CardHandInterface makeAnAnnonce() {
         return hand;
     }
 
     @Override
-    public CardHand getHand() {
+    public CardHandInterface getHand() {
         return hand;
     }
 
     @Override
-    public void setHand(CardHand hand) {
+    public void setHand(CardHandInterface hand) {
         this.hand = hand;
+    }
+
+    @Override
+    public Card pickACard() {
+        CardHandInterface lastHand = hand.Clone();
+        Card pickedCard = hand.pick();
+        actions.put(lastHand, pickedCard.getType());
+        return pickedCard;
+    }
+
+    @Override
+    public HashMap<CardHandInterface, CardType> getActions() {
+        return actions;
     }
 }

@@ -1,8 +1,8 @@
 package card_hand_score;
 
 import card.Card;
-import card.CardHand;
 import card.CardType;
+import card_hand.CardHandInterface;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +16,7 @@ public abstract class ScoreCommon implements CardHandScore {
     }
 
     @Override
-    public int getHandScore(CardHand cardHand) {
+    public int getHandScore(CardHandInterface cardHand) {
 
         List<Card> hand = cardHand.getCardsInHand();
 

@@ -1,8 +1,8 @@
 package card_hand_score;
 
-import card.CardHand;
+import card_hand.CardHandInterface;
 
 public interface CardHandScore {
 
-    public int getHandScore(CardHand cardHand);
+    public int getHandScore(CardHandInterface cardHand);
 }

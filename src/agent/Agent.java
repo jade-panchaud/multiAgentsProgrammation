@@ -1,14 +1,17 @@
 package agent;
 
-import card.CardHand;
+import card.Card;
+import card.CardType;
+import card_hand.CardHandInterface;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface Agent {
 
-    CardHand getHand();
+    CardHandInterface getHand();
 
-    void setHand(CardHand hand);
+    void setHand(CardHandInterface hand);
 
     /**
      * Choose an agent to pick a card, in order to make
@@ -31,5 +34,9 @@ public interface Agent {
      * @return TRUE if another Agent can pick one of his cards,
      *         FALSE if other Agents shouldn't.
      */
-    CardHand makeAnAnnonce();
+    CardHandInterface makeAnAnnonce();
+
+    Card pickACard();
+
+    HashMap<CardHandInterface, CardType> getActions();
 }
