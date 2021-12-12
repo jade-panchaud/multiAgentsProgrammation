@@ -13,16 +13,17 @@ public class Main {
     {
         Display display = new DisplayConsole();
 
-        Game game = new Game(display);
+        for(int i = 0; i < 1; i++) {
+            Game game = new Game(display);
 
-        List<Agent> players = new ArrayList<>();
-        players.add(new AgentCommon(Team.RED));
-        players.add(new AgentCommon(Team.RED));
-        players.add(new AgentCommon(Team.BLUE));
-        players.add(new AgentCommon(Team.BLUE));
-        players.add(new AgentCommon(Team.BLUE));
+            List<Agent> players = new ArrayList<>();
+            players.add(new AgentCommon(Team.RED));
+            players.add(new AgentCommon(Team.RED));
+            players.add(new AgentCommon(Team.BLUE));
+            players.add(new AgentCommon(Team.BLUE));
+            players.add(new AgentCommon(Team.BLUE));
 
-
-        game.startGame(players);
+            game.startGame(players);
+        }
     }
 }

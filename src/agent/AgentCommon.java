@@ -44,8 +44,10 @@ public class AgentCommon implements Agent {
 
         int handScore = 0;
         for (Agent agent : agents) {
-            handScore = cardHandScore.getHandScore(agent.makeAnAnnonce());
-            agentsScores.add(new Score(agent, handScore));
+            if(agent.getHand().getCardsInHand().size() > 0) {
+                handScore = cardHandScore.getHandScore(agent.makeAnAnnonce());
+                agentsScores.add(new Score(agent, handScore));
+            }
         }
 
         return agentsScores;
