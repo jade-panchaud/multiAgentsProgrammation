@@ -14,17 +14,18 @@ import java.util.TreeSet;
 
 public class AgentCommon implements Agent {
 
-    private CardHandInterface hand;
-    private final HashMap<CardHandInterface, CardType> actions;
-    private final CardHandScore cardHandScore = new BlueScoreCommon();
-    private Team team;
+    protected CardHandInterface hand;
+    protected final HashMap<CardHandInterface, CardType> actions;
+    protected final CardHandScore cardHandScore;
+    protected Team team;
 
-    public AgentCommon() {
+    public AgentCommon(CardHandScore cardHandScore, Team team) {
         actions = new HashMap<>();
+        this.cardHandScore = cardHandScore;
+        this.team = team;
     }
 
-    public AgentCommon(Team team) {
-        actions = new HashMap<>();
+    public void setTeam(Team team) {
         this.team = team;
     }
 

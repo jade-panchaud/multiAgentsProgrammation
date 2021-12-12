@@ -13,5 +13,7 @@ public interface CardHandInterface extends Cloneable {
 
     CardHandInterface Clone();
 
+    boolean hasBomb();
+
     boolean equals(Object o);
 }

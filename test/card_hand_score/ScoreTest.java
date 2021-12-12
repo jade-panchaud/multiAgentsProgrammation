@@ -2,6 +2,7 @@ package card_hand_score;
 
 import agent.Agent;
 import agent.AgentCommon;
+import agent.AgentFactory;
 import org.junit.jupiter.api.Test;
 
 import java.util.TreeSet;
@@ -13,7 +14,7 @@ class ScoreTest {
     @Test
     void compareTo() {
 
-        Agent agent = new AgentCommon();
+        Agent agent = AgentFactory.getBlueCommonAgent();
 
         Score scoreA = new Score(agent, 10);
         Score scoreB = new Score(agent, 2);
@@ -24,7 +25,7 @@ class ScoreTest {
 
     @Test
     void sort() {
-        Agent agent = new AgentCommon();
+        Agent agent = AgentFactory.getBlueCommonAgent();
 
         Score scoreA = new Score(agent, 10);
         Score scoreB = new Score(agent, 5);

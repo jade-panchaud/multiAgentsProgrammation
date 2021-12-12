@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AgentCommonTest {
 
-    private final AgentCommon agentCommon = new AgentCommon();
+    private final Agent agentCommon = AgentFactory.getBlueCommonAgent();
 
     @Test
     void test_make_hand_annonce() {
@@ -70,7 +70,7 @@ class AgentCommonTest {
 
         CardHand hand = new CardHand();
         List<Card> cardInHand = new ArrayList<>();
-        Agent agent = new AgentCommon();
+        Agent agent = AgentFactory.getBlueCommonAgent();
 
         for (CardType cardType : cardTypes) {
             cardInHand.add(new Card(cardType));
@@ -84,7 +84,7 @@ class AgentCommonTest {
     @Test
     void pickACard() {
 
-        Agent agent = new AgentCommon();
+        Agent agent = AgentFactory.getBlueCommonAgent();
 
         CardHandInterface hand = new CardHandMock();
         List<Card> cardInHand = new ArrayList<>();

@@ -1,6 +1,7 @@
 package card_hand;
 
 import card.Card;
+import card.CardType;
 import tools.Util;
 
 import java.util.ArrayList;
@@ -38,6 +39,17 @@ public class CardHand implements CardHandInterface {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    @Override
+    public boolean hasBomb() {
+        boolean hasBomb = false;
+
+        for (Card card : cardsInHand) {
+            hasBomb = card.getType() == CardType.BOMB;
+        }
+
+        return hasBomb;
     }
 
     @Override
