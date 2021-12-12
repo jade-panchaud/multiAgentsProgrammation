@@ -1,0 +1,3 @@
+nbParty,0
+blueWin,0
+redWin,0
