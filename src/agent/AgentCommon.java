@@ -6,6 +6,7 @@ import card_hand.CardHandInterface;
 import card_hand_score.BlueScoreCommon;
 import card_hand_score.CardHandScore;
 import card_hand_score.Score;
+import team.Team;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,9 +17,19 @@ public class AgentCommon implements Agent {
     private CardHandInterface hand;
     private final HashMap<CardHandInterface, CardType> actions;
     private final CardHandScore cardHandScore = new BlueScoreCommon();
+    private Team team;
 
     public AgentCommon() {
         actions = new HashMap<>();
+    }
+
+    public AgentCommon(Team team) {
+        actions = new HashMap<>();
+        this.team = team;
+    }
+
+    public Team getTeam() {
+        return team;
     }
 
     @Override

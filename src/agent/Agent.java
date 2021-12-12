@@ -3,6 +3,7 @@ package agent;
 import card.Card;
 import card.CardType;
 import card_hand.CardHandInterface;
+import team.Team;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,8 @@ public interface Agent {
     CardHandInterface getHand();
 
     void setHand(CardHandInterface hand);
+
+    Team getTeam();
 
     /**
      * Choose an agent to pick a card, in order to make

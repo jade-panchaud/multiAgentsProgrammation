@@ -2,5 +2,5 @@ package game;
 
 public interface VictoryListener {
     void blueTeamWins();
-    void redTeamWins();
+    void redTeamWins(int typeOfVictory);
 }

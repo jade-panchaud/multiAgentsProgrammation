@@ -1,5 +1,6 @@
 package game;
 
+import output.Output;
 import team.Team;
 import agent.Agent;
 import card.CardSet;
@@ -12,6 +13,7 @@ public class Game {
     private List<Agent> players;
     private CardSet cards;
     private boolean gameStillRunning;
+    private int numberOfTheTurn = 1;
 
     public Game(Display display) {
         this.display = display;
@@ -33,12 +35,11 @@ public class Game {
 
         //While there is no victory, start a new round with less
         //cards in each round
-        int numberOfTheTurn = 1;
         while (this.gameStillRunning) {
-            display.newTurn(numberOfTheTurn);
+            display.newTurn(this.numberOfTheTurn);
             Agent agentStartingNewRound = startNewRound(firstAgentToPlay);
             firstAgentToPlay = agentStartingNewRound;
-            numberOfTheTurn++;
+            this.numberOfTheTurn++;
         }
     }
 
@@ -87,12 +88,14 @@ public class Game {
             public void blueTeamWins() {
                 gameStillRunning = false;
                 display.showWinners(Team.BLUE);
+                Output.updateResultsFile(1, players, 0, numberOfTheTurn, cards.getGreenCardsReturned(), -1, -1);
             }
 
             @Override
-            public void redTeamWins() {
+            public void redTeamWins(int victoryType) {
                 gameStillRunning = false;
                 display.showWinners(Team.RED);
+                Output.updateResultsFile(0, players, victoryType, numberOfTheTurn, cards.getGreenCardsReturned(), -1, -1);
             }
         };
     }

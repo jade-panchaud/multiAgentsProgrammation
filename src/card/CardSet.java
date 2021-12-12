@@ -38,7 +38,7 @@ public class CardSet {
                if(greenCardsReturned == greenCardNeededToWin){
                    victoryListener.blueTeamWins();
                } else if (cardsInGame.size() < greenCardNeededToWin) {
-                   victoryListener.redTeamWins();
+                   victoryListener.redTeamWins(1);
                }
            }
 
@@ -47,14 +47,14 @@ public class CardSet {
                cardsInGame.remove(card);
 
                if(cardsInGame.size() < greenCardNeededToWin) {
-                   victoryListener.redTeamWins();
+                   victoryListener.redTeamWins(1);
                }
            }
 
            @Override
            public void bombReturned(Card card) {
                cardsInGame.remove(card);
-               victoryListener.redTeamWins();
+               victoryListener.redTeamWins(2);
            }
        };
 

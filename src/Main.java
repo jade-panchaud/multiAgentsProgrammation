@@ -3,6 +3,7 @@ import agent.AgentCommon;
 import display.Display;
 import display.DisplayConsole;
 import game.Game;
+import team.Team;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +16,11 @@ public class Main {
         Game game = new Game(display);
 
         List<Agent> players = new ArrayList<>();
-        players.add(new AgentCommon());
-        players.add(new AgentCommon());
-        players.add(new AgentCommon());
-        players.add(new AgentCommon());
-        players.add(new AgentCommon());
+        players.add(new AgentCommon(Team.RED));
+        players.add(new AgentCommon(Team.RED));
+        players.add(new AgentCommon(Team.BLUE));
+        players.add(new AgentCommon(Team.BLUE));
+        players.add(new AgentCommon(Team.BLUE));
 
 
         game.startGame(players);
