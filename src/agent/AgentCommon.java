@@ -3,9 +3,9 @@ package agent;
 import card.Card;
 import card.CardType;
 import card_hand.CardHandInterface;
-import card_hand_score.BlueScoreCommon;
 import card_hand_score.CardHandScore;
 import card_hand_score.Score;
+import comportment.ComportmentInterface;
 import team.Team;
 
 import java.util.HashMap;
@@ -17,12 +17,14 @@ public class AgentCommon implements Agent {
     protected CardHandInterface hand;
     protected final HashMap<CardHandInterface, CardType> actions;
     protected final CardHandScore cardHandScore;
+    protected final ComportmentInterface comportment;
     protected Team team;
 
-    public AgentCommon(CardHandScore cardHandScore, Team team) {
+    public AgentCommon(CardHandScore cardHandScore, Team team, ComportmentInterface comportment) {
         actions = new HashMap<>();
         this.cardHandScore = cardHandScore;
         this.team = team;
+        this.comportment = comportment;
     }
 
     public void setTeam(Team team) {
@@ -45,7 +47,7 @@ public class AgentCommon implements Agent {
 
         int handScore = 0;
         for (Agent agent : agents) {
-            if(agent.getHand().getCardsInHand().size() > 0) {
+            if (!agent.getHand().getCardsInHand().isEmpty()) {
                 handScore = cardHandScore.getHandScore(agent.makeAnAnnonce());
                 agentsScores.add(new Score(agent, handScore));
             }

@@ -53,6 +53,17 @@ public class CardHand implements CardHandInterface {
     }
 
     @Override
+    public int greenCardCount() {
+        int greenCardCount = 0;
+        for (Card card : cardsInHand) {
+            if (card.getType() == CardType.GREEN) {
+                greenCardCount++;
+            }
+        }
+        return greenCardCount;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
