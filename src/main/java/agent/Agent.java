@@ -3,6 +3,7 @@ package agent;
 import card.Card;
 import card.CardType;
 import card_hand.CardHandInterface;
+import dot.DotInterface;
 import team.Team;
 
 import java.util.HashMap;
@@ -35,12 +36,21 @@ public interface Agent {
      * In a second step, it's gonna be number from 0 to x (the
      * number of cards in hands), to indicate the number of
      * green cards in hands.
+     *
      * @return TRUE if another Agent can pick one of his cards,
-     *         FALSE if other Agents shouldn't.
+     * FALSE if other Agents shouldn't.
      */
     CardHandInterface makeAnAnnonce();
 
     Card pickACard();
 
     HashMap<CardHandInterface, CardType> getActions();
+
+    DotInterface getDot();
+
+    public String getName();
+
+    public void setName(String name);
+
+    public void setFeedBack(Agent agent, CardHandInterface cardHand, Card card);
 }

@@ -6,6 +6,7 @@ import card_hand.CardHandInterface;
 import card_hand_score.CardHandScore;
 import card_hand_score.Score;
 import comportment.ComportmentInterface;
+import dot.DotInterface;
 import team.Team;
 
 import java.util.HashMap;
@@ -19,12 +20,15 @@ public class AgentCommon implements Agent {
     protected final CardHandScore cardHandScore;
     protected final ComportmentInterface comportment;
     protected Team team;
+    protected DotInterface dot;
+    protected String name = "";
 
-    public AgentCommon(CardHandScore cardHandScore, Team team, ComportmentInterface comportment) {
+    public AgentCommon(CardHandScore cardHandScore, Team team, ComportmentInterface comportment, DotInterface dot) {
         actions = new HashMap<>();
         this.cardHandScore = cardHandScore;
         this.team = team;
         this.comportment = comportment;
+        this.dot = dot;
     }
 
     public void setTeam(Team team) {
@@ -33,6 +37,10 @@ public class AgentCommon implements Agent {
 
     public Team getTeam() {
         return team;
+    }
+
+    @Override
+    public void setFeedBack(Agent agent, CardHandInterface cardHand, Card card) {
     }
 
     @Override
@@ -82,5 +90,21 @@ public class AgentCommon implements Agent {
     @Override
     public HashMap<CardHandInterface, CardType> getActions() {
         return actions;
+    }
+
+    @Override
+    public DotInterface getDot() {
+        dot.setLabel(name);
+        return dot;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 }

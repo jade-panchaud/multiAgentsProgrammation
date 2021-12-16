@@ -1,5 +1,7 @@
 package game;
 
+import card.Card;
+import card_hand.CardHandInterface;
 import output.Output;
 import team.Team;
 import agent.Agent;
@@ -52,10 +54,6 @@ public class Game {
     public Agent startNewRound(Agent agentBeginningTheRound) {
         this.cards.giveCards(this.players);
 
-        for (Agent agent : this.players) {
-            agent.makeAnAnnonce();
-        }
-
         Agent agentFromWhomWeWillPickACard;
         int numberOfActions = this.players.size();
 
@@ -63,10 +61,21 @@ public class Game {
             agentFromWhomWeWillPickACard = agentBeginningTheRound.choseAgent(this.players);
             display.showChoosenAgent(agentFromWhomWeWillPickACard, agentBeginningTheRound);
 
-            display.showReturnedCard(agentFromWhomWeWillPickACard.pickACard());
+            CardHandInterface handAnnounced = agentFromWhomWeWillPickACard.makeAnAnnonce();
+            Card pickedCard = agentFromWhomWeWillPickACard.pickACard();
+
+            List<Agent> watcherAgents = new java.util.ArrayList<>(List.copyOf(players));
+            watcherAgents.remove(agentFromWhomWeWillPickACard);
+
+            for (Agent watcherAgent : watcherAgents) {
+                watcherAgent.setFeedBack(agentFromWhomWeWillPickACard, handAnnounced, pickedCard);
+            }
+
+            display.showReturnedCard(pickedCard);
 
             numberOfActions--;
             display.showGreenReturnedCards(cards.getGreenCardsReturned());
+            agentBeginningTheRound = agentFromWhomWeWillPickACard;
         } while (numberOfActions > 0 && this.gameStillRunning);
 
         return agentFromWhomWeWillPickACard;

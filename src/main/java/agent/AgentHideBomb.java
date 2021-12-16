@@ -6,6 +6,7 @@ import card_hand.CardHand;
 import card_hand.CardHandInterface;
 import card_hand_score.CardHandScore;
 import comportment.ComportmentInterface;
+import dot.DotNodeFactory;
 import team.Team;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
 public class AgentHideBomb extends AgentCommon {
 
     public AgentHideBomb(CardHandScore cardHandScore, Team team, ComportmentInterface comportment) {
-        super(cardHandScore, team, comportment);
+        super(cardHandScore, team, comportment, DotNodeFactory.getDefaultDotNode());
     }
 
     @Override
