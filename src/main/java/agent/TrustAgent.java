@@ -71,6 +71,6 @@ public class TrustAgent extends AgentCommon {
 
     @Override
     public ReputationGraph getReputationGraph() {
-        return trustAlgorithms.calculateReputationGraph(feedBackGraph);
+        return trustAlgorithms.calculateReputationGraph(feedBackGraph, this);
     }
 }

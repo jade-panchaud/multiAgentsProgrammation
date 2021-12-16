@@ -30,9 +30,9 @@ public class AgentFactory {
         return new TrustAgent(
                 new RedScoreCommon(),
                 Team.RED,
-                new RedHiddenComportment(),
+                new CommonComportment(),
                 DotNodeFactory.getRedDotNode(),
-                new EigenTrust(0.5));
+                new EigenTrust(0.2));
     }
 
     public static Agent getBlueTrustAgent() {
@@ -41,7 +41,7 @@ public class AgentFactory {
                 Team.BLUE,
                 new CommonComportment(),
                 DotNodeFactory.getBlueDotNode(),
-                new EigenTrust(0.5));
+                new EigenTrust(0.2));
     }
 
 }

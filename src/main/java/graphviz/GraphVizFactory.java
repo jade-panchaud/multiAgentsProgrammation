@@ -30,12 +30,16 @@ public class GraphVizFactory {
     }
 
 
-    public static void generateSvg(Agent agent) throws IOException {
+    public static void generateFeedBackSvg(Agent agent) throws IOException {
         String path = directoryPath + directorySeparator + agent.getName();
-//        Graphviz.fromString(agent.getFeedBackGraph().toDot())
-//                .engine(Engine.DOT)
-//                .render(Format.SVG)
-//                .toFile(new File(path + directorySeparator + "feedBack"));
+        Graphviz.fromString(agent.getFeedBackGraph().toDot())
+                .engine(Engine.DOT)
+                .render(Format.SVG)
+                .toFile(new File(path + directorySeparator + "feedBack"));
+    }
+
+    public static void generateReputationSvg(Agent agent) throws IOException {
+        String path = directoryPath + directorySeparator + agent.getName();
 
         Graphviz.fromString(agent.getReputationGraph().toDot())
                 .engine(Engine.NEATO)

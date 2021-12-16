@@ -16,7 +16,7 @@ public class Output {
     private static Scanner x;
 
     public static void updateResultsFile(int blueTeamWins, List<Agent> players, int victoryType, int turnNb, int greenReturned, int redToBlue, int blueToRed) {
-        String filePath = "./src/output/results.csv";
+        String filePath = "results/results.csv";
 
         //Get red and blue teams
         List<String> blueTeam = new ArrayList<>();

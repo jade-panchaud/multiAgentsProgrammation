@@ -39,7 +39,7 @@ public class ReputationGraph {
             Map<String, Attribute> map = new HashMap<>();
             double displayWeight = new BigDecimal(reputationGraph.getEdgeWeight(v)).setScale(2, RoundingMode.HALF_UP).doubleValue();
             map.put("label", DefaultAttribute.createAttribute(displayWeight));
-            map.put("len", DefaultAttribute.createAttribute((1 - displayWeight) * 10));
+            map.put("len", DefaultAttribute.createAttribute((1 - displayWeight) * 2));
             return map;
         });
         exporter.setGraphAttributeProvider(() -> {

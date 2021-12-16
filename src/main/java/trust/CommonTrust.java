@@ -25,7 +25,7 @@ public class CommonTrust {
     }
 
     private void calculateReputationGraph() {
-        reputationGraph = trustAlgorithm.calculateReputationGraph(feedBackGraph);
+//        reputationGraph = trustAlgorithm.calculateReputationGraph(feedBackGraph, this);
     }
 
     private void calculateTrustGraph() {
