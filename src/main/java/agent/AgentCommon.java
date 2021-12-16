@@ -11,6 +11,7 @@ import team.Team;
 import trust.graph.FeedBackGraph;
 import trust.graph.ReputationGraph;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
@@ -48,7 +49,10 @@ public class AgentCommon implements Agent {
 
     @Override
     public Agent choseAgent(List<Agent> agents) {
-        TreeSet<Score> agentsScores = scoreAllAgents(agents);
+
+        List<Agent> otherAgents = new ArrayList<>(List.copyOf(agents));
+        otherAgents.remove(this);
+        TreeSet<Score> agentsScores = scoreAllAgents(otherAgents);
         return agentsScores.last().getAgent();
     }
 
