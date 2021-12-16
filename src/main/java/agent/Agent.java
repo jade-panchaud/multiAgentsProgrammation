@@ -5,6 +5,8 @@ import card.CardType;
 import card_hand.CardHandInterface;
 import dot.DotInterface;
 import team.Team;
+import trust.graph.FeedBackGraph;
+import trust.graph.ReputationGraph;
 
 import java.util.HashMap;
 import java.util.List;
@@ -53,4 +55,10 @@ public interface Agent {
     public void setName(String name);
 
     public void setFeedBack(Agent agent, CardHandInterface cardHand, Card card);
+
+    public FeedBackGraph getFeedBackGraph();
+
+    public ReputationGraph getReputationGraph();
+
+    public void setFeedBackGraph(FeedBackGraph feedBackGraph);
 }

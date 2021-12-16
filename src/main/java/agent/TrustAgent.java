@@ -10,27 +10,28 @@ import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import team.Team;
 import trust.algorithms.TrustAlgorithmsInterfaces;
-import trust.graph.FeedBackGraph;
 import trust.graph.ReputationGraph;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class TrustAgent extends AgentCommon {
 
-    protected FeedBackGraph feedBackGraph;
+
     protected TrustAlgorithmsInterfaces trustAlgorithms;
 
 
-    public TrustAgent(CardHandScore cardHandScore, Team team, ComportmentInterface comportment, DotInterface dot) {
+    public TrustAgent(CardHandScore cardHandScore, Team team, ComportmentInterface comportment, DotInterface dot, TrustAlgorithmsInterfaces trustAlgorithms) {
         super(cardHandScore, team, comportment, dot);
+        this.trustAlgorithms = trustAlgorithms;
     }
 
 
     @Override
     public Agent choseAgent(List<Agent> agents) {
-        ReputationGraph reputation = getReputation();
+        ReputationGraph reputation = getReputationGraph();
         Graph<Agent, DefaultWeightedEdge> reputationGraph = reputation.reputationGraph;
         TreeSet<Score> agentsScores = scoreAllAgents(reputationGraph);
         return agentsScores.last().getAgent();
@@ -38,14 +39,18 @@ public class TrustAgent extends AgentCommon {
 
     @Override
     public void setFeedBack(Agent agent, CardHandInterface cardHand, Card card) {
-        super.setFeedBack(agent, cardHand, card);
+        feedBackGraph.addFeedBack(
+                this,
+                agent,
+                cardHandScore.getFeedBackScore(cardHand, card)
+        );
     }
 
     private TreeSet<Score> scoreAllAgents(Graph<Agent, DefaultWeightedEdge> agentsGraph) {
 
         TreeSet<Score> agentsScores = new TreeSet<>();
 
-        Set<Agent> agentSet = agentsGraph.vertexSet();
+        Set<Agent> agentSet = new HashSet<>(Set.copyOf(agentsGraph.vertexSet()));
         agentSet.remove(this);
 
         int handScore = 0;
@@ -64,7 +69,8 @@ public class TrustAgent extends AgentCommon {
         return agentsGraph.getEdgeWeight(edge);
     }
 
-    public ReputationGraph getReputation() {
+    @Override
+    public ReputationGraph getReputationGraph() {
         return trustAlgorithms.calculateReputationGraph(feedBackGraph);
     }
 }

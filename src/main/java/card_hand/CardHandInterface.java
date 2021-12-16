@@ -1,6 +1,7 @@
 package card_hand;
 
 import card.Card;
+import card.CardType;
 
 import java.util.List;
 
@@ -18,4 +19,8 @@ public interface CardHandInterface extends Cloneable {
     int greenCardCount();
 
     boolean equals(Object o);
+
+    int countCard();
+
+    int countCardType(CardType cardType);
 }

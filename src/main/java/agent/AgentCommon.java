@@ -8,6 +8,8 @@ import card_hand_score.Score;
 import comportment.ComportmentInterface;
 import dot.DotInterface;
 import team.Team;
+import trust.graph.FeedBackGraph;
+import trust.graph.ReputationGraph;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.TreeSet;
 
 public class AgentCommon implements Agent {
 
+    protected FeedBackGraph feedBackGraph;
     protected CardHandInterface hand;
     protected final HashMap<CardHandInterface, CardType> actions;
     protected final CardHandScore cardHandScore;
@@ -106,5 +109,18 @@ public class AgentCommon implements Agent {
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    public FeedBackGraph getFeedBackGraph() {
+        return feedBackGraph;
+    }
+
+    public void setFeedBackGraph(FeedBackGraph feedBackGraph) {
+        this.feedBackGraph = feedBackGraph;
+    }
+
+    @Override
+    public ReputationGraph getReputationGraph() {
+        return null;
     }
 }

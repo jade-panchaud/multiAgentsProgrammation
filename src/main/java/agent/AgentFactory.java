@@ -7,6 +7,7 @@ import comportment.hide_comportment.BlueHiddenComportment;
 import comportment.hide_comportment.RedHiddenComportment;
 import dot.DotNodeFactory;
 import team.Team;
+import trust.algorithms.EigenTrust;
 
 public class AgentFactory {
     public static Agent getBlueCommonAgent() {
@@ -24,4 +25,23 @@ public class AgentFactory {
     public static Agent getRedHiddenBombAgent() {
         return new AgentCommon(new RedScoreCommon(), Team.RED, new RedHiddenComportment(), DotNodeFactory.getRedDotNode());
     }
+
+    public static Agent getRedTrustAgent() {
+        return new TrustAgent(
+                new RedScoreCommon(),
+                Team.RED,
+                new RedHiddenComportment(),
+                DotNodeFactory.getRedDotNode(),
+                new EigenTrust(0.5));
+    }
+
+    public static Agent getBlueTrustAgent() {
+        return new TrustAgent(
+                new BlueScoreCommon(),
+                Team.BLUE,
+                new CommonComportment(),
+                DotNodeFactory.getBlueDotNode(),
+                new EigenTrust(0.5));
+    }
+
 }

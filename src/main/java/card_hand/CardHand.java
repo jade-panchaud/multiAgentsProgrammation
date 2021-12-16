@@ -55,13 +55,7 @@ public class CardHand implements CardHandInterface {
 
     @Override
     public int greenCardCount() {
-        int greenCardCount = 0;
-        for (Card card : cardsInHand) {
-            if (card.getType() == CardType.GREEN) {
-                greenCardCount++;
-            }
-        }
-        return greenCardCount;
+        return countCardType(CardType.GREEN);
     }
 
     @Override
@@ -75,5 +69,21 @@ public class CardHand implements CardHandInterface {
     @Override
     public int hashCode() {
         return Objects.hash(cardsInHand);
+    }
+
+    @Override
+    public int countCard() {
+        return cardsInHand.size();
+    }
+
+    @Override
+    public int countCardType(CardType cardType) {
+        int cardCount = 0;
+        for (Card card : cardsInHand) {
+            if (card.getType() == cardType) {
+                cardCount++;
+            }
+        }
+        return cardCount;
     }
 }

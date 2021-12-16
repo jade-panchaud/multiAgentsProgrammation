@@ -10,6 +10,7 @@ import trust.graph.ReputationGraph;
 import trust.graph.TrustGraph;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -39,6 +40,12 @@ public class EigenTrust implements TrustAlgorithmsInterfaces {
 
             for (Agent otherAgent : otherAgents) {
                 DefaultEdgeList currentEdge = graph.getEdge(agent, otherAgent);
+
+                if (Objects.isNull(currentEdge)) {
+                    outputGraph.addEdge(agent, otherAgent);
+                    outputGraph.setEdgeWeight(agent, otherAgent, 1.0);
+                    continue;
+                }
 
                 List<Integer> normalisedSatisfactions = currentEdge.getValues().stream().map(v -> {
                     if (v >= threshold) {

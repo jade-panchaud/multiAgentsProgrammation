@@ -9,6 +9,8 @@ import org.jgrapht.nio.dot.DOTExporter;
 
 import java.io.StringWriter;
 import java.io.Writer;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -35,7 +37,9 @@ public class ReputationGraph {
         });
         exporter.setEdgeAttributeProvider(v -> {
             Map<String, Attribute> map = new HashMap<>();
-            map.put("label", DefaultAttribute.createAttribute(reputationGraph.getEdgeWeight(v)));
+            double displayWeight = new BigDecimal(reputationGraph.getEdgeWeight(v)).setScale(2, RoundingMode.HALF_UP).doubleValue();
+            map.put("label", DefaultAttribute.createAttribute(displayWeight));
+            map.put("len", DefaultAttribute.createAttribute((1 - displayWeight) * 10));
             return map;
         });
         exporter.setGraphAttributeProvider(() -> {

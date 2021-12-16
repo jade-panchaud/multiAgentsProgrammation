@@ -32,4 +32,20 @@ public abstract class ScoreCommon implements CardHandScore {
     private int getCardScore(Card card) {
         return cardScore.get(card.getType());
     }
+
+    @Override
+    public double getFeedBackScore(CardHandInterface cardHand, Card pickCard) {
+        if (isObjectiveCard(pickCard)) {
+            return 1;
+        }
+        return getProbability(cardHand, pickCard);
+    }
+
+    protected abstract boolean isObjectiveCard(Card card);
+
+    protected double getProbability(CardHandInterface cardHand, Card card) {
+        double totalCard = cardHand.countCard();
+        double cardTypeCount = cardHand.countCardType(card.getType());
+        return (cardTypeCount / totalCard);
+    }
 }

@@ -6,8 +6,9 @@ import jgrapht_custom.DefaultEdgeList;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.SimpleDirectedGraph;
 
-public class GraphFactory {
+import java.util.List;
 
+public class GraphFactory {
 
     public static FeedBackGraph getFeedBackTestGraph() {
         Agent agentA = AgentFactory.getBlueCommonAgent();
@@ -41,6 +42,17 @@ public class GraphFactory {
         backGraph.addFeedBack(agentB, agentC, 1.0);
 
         return backGraph;
+    }
+
+    public static FeedBackGraph createFeedbackGraph(List<Agent> agents) {
+
+        Graph<Agent, DefaultEdgeList> graph = new SimpleDirectedGraph<>(DefaultEdgeList.class);
+
+        for (Agent agent : agents) {
+            graph.addVertex(agent);
+        }
+
+        return new FeedBackGraph(graph);
     }
 
 }

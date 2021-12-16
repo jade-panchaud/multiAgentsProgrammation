@@ -1,6 +1,8 @@
 package card_hand_score;
 
+import card.Card;
 import card.CardType;
+import card_hand.CardHandInterface;
 
 import java.util.HashMap;
 
@@ -16,5 +18,10 @@ public class BlueScoreCommon extends ScoreCommon implements CardHandScore {
         cardScore.put(CardType.YELLOW, 0);
         cardScore.put(CardType.BOMB, -10);
         return cardScore;
+    }
+
+    @Override
+    protected boolean isObjectiveCard(Card card) {
+        return false;
     }
 }
