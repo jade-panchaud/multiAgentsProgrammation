@@ -18,8 +18,8 @@ public class Main {
 
             List<Agent> players = new ArrayList<>();
 
-            players.add(AgentFactory.getRedHiddenBombAgent());
-            players.add(AgentFactory.getRedHiddenBombAgent());
+            players.add(AgentFactory.getRedCommonAgent());
+            players.add(AgentFactory.getRedCommonAgent());
 
             players.add(AgentFactory.getBlueCommonAgent());
             players.add(AgentFactory.getBlueCommonAgent());

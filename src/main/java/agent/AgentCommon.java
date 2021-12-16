@@ -69,7 +69,7 @@ public class AgentCommon implements Agent {
 
     @Override
     public CardHandInterface makeAnAnnonce() {
-        return hand;
+        return comportment.announceHand(hand);
     }
 
     @Override

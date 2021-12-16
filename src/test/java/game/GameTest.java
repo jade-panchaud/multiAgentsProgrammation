@@ -50,15 +50,21 @@ class GameTest {
         }
 
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 1000; i++) {
             Game game = new Game(new DisplayNone());
             game.startGame(players);
         }
 
-        GraphVizFactory.generateFeedBackSvg(bill);
-        GraphVizFactory.generateFeedBackSvg(robin);
+
         GraphVizFactory.generateReputationSvg(bill);
         GraphVizFactory.generateReputationSvg(robin);
+        GraphVizFactory.generateReputationSvg(bruno);
+        GraphVizFactory.generateReputationSvg(barbara);
+        GraphVizFactory.generateReputationSvg(baptiste);
+        GraphVizFactory.generateReputationSvg(beatrice);
+        GraphVizFactory.generateReputationSvg(bernard);
+        GraphVizFactory.generateReputationSvg(raphael);
+
         System.out.println(robin.getReputationGraph().toDot());
 
     }

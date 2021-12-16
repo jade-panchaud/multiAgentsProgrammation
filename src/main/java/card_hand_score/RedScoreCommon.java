@@ -2,6 +2,7 @@ package card_hand_score;
 
 import card.Card;
 import card.CardType;
+import card_hand.CardHandInterface;
 
 public class RedScoreCommon extends ScoreCommon implements CardHandScore {
 

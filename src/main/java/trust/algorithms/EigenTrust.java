@@ -43,7 +43,7 @@ public class EigenTrust implements TrustAlgorithmsInterfaces {
 
             if (Objects.isNull(currentEdge)) {
                 outputGraph.addEdge(currentAgent, otherAgent);
-                outputGraph.setEdgeWeight(currentAgent, otherAgent, 1.0);
+                outputGraph.setEdgeWeight(currentAgent, otherAgent, 0.5);
                 continue;
             }
 
@@ -51,13 +51,12 @@ public class EigenTrust implements TrustAlgorithmsInterfaces {
                 if (v >= threshold) {
                     return 1;
                 }
-                return -1;
+                return 0;
             }).collect(Collectors.toList());
 
             outputGraph.addEdge(currentAgent, otherAgent);
             outputGraph.setEdgeWeight(currentAgent, otherAgent, normalisedSatisfactions.stream().reduce(0, Integer::sum));
         }
-
 
         for (Agent agent : agentSet) {
             Set<DefaultWeightedEdge> outGoingEdge = outputGraph.outgoingEdgesOf(agent);

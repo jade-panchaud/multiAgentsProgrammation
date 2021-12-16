@@ -12,10 +12,7 @@ import team.Team;
 import trust.algorithms.TrustAlgorithmsInterfaces;
 import trust.graph.ReputationGraph;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class TrustAgent extends AgentCommon {
 
@@ -33,8 +30,8 @@ public class TrustAgent extends AgentCommon {
     public Agent choseAgent(List<Agent> agents) {
         ReputationGraph reputation = getReputationGraph();
         Graph<Agent, DefaultWeightedEdge> reputationGraph = reputation.reputationGraph;
-        TreeSet<Score> agentsScores = scoreAllAgents(reputationGraph);
-        return agentsScores.last().getAgent();
+        ArrayList<Score> agentsScores = scoreAllAgents(reputationGraph);
+        return agentsScores.get(agentsScores.size() - 1).getAgent();
     }
 
     @Override
@@ -46,9 +43,9 @@ public class TrustAgent extends AgentCommon {
         );
     }
 
-    private TreeSet<Score> scoreAllAgents(Graph<Agent, DefaultWeightedEdge> agentsGraph) {
+    private ArrayList<Score> scoreAllAgents(Graph<Agent, DefaultWeightedEdge> agentsGraph) {
 
-        TreeSet<Score> agentsScores = new TreeSet<>();
+        ArrayList<Score> agentsScores = new ArrayList();
 
         Set<Agent> agentSet = new HashSet<>(Set.copyOf(agentsGraph.vertexSet()));
         agentSet.remove(this);
@@ -61,6 +58,9 @@ public class TrustAgent extends AgentCommon {
                 agentsScores.add(new Score(agent, (handScore * trustValue)));
             }
         }
+
+        Collections.sort(agentsScores);
+
         return agentsScores;
     }
 

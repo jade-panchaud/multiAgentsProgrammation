@@ -5,6 +5,7 @@ import card.Card;
 import card.CardSet;
 import card_hand.CardHandInterface;
 import display.Display;
+import output.Output;
 import team.Team;
 
 import java.util.List;
@@ -96,14 +97,14 @@ public class Game {
             public void blueTeamWins() {
                 gameStillRunning = false;
                 display.showWinners(Team.BLUE);
-                //Output.updateResultsFile(1, players, 0, numberOfTheTurn, cards.getGreenCardsReturned(), -1, -1);
+                Output.updateResultsFile(1, players, 0, numberOfTheTurn, cards.getGreenCardsReturned(), -1, -1);
             }
 
             @Override
             public void redTeamWins(int victoryType) {
                 gameStillRunning = false;
                 display.showWinners(Team.RED);
-                //Output.updateResultsFile(0, players, victoryType, numberOfTheTurn, cards.getGreenCardsReturned(), -1, -1);
+                Output.updateResultsFile(0, players, victoryType, numberOfTheTurn, cards.getGreenCardsReturned(), -1, -1);
             }
         };
     }

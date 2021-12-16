@@ -32,7 +32,16 @@ public class AgentFactory {
                 Team.RED,
                 new CommonComportment(),
                 DotNodeFactory.getRedDotNode(),
-                new EigenTrust(0.2));
+                new EigenTrust(0.4));
+    }
+
+    public static Agent getRedTrustHiddenBombAgent() {
+        return new TrustAgent(
+                new RedScoreCommon(),
+                Team.RED,
+                new RedHiddenComportment(),
+                DotNodeFactory.getRedDotNode(),
+                new EigenTrust(0.4));
     }
 
     public static Agent getBlueTrustAgent() {
@@ -41,7 +50,16 @@ public class AgentFactory {
                 Team.BLUE,
                 new CommonComportment(),
                 DotNodeFactory.getBlueDotNode(),
-                new EigenTrust(0.2));
+                new EigenTrust(0.4));
+    }
+
+    public static Agent getBlueTrustHiddenBombAgent() {
+        return new TrustAgent(
+                new BlueScoreCommon(),
+                Team.BLUE,
+                new BlueHiddenComportment(),
+                DotNodeFactory.getBlueDotNode(),
+                new EigenTrust(0.4));
     }
 
 }
